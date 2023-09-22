@@ -1,18 +1,19 @@
-#!/usr/bin/env bash
-set -Eeou pipefail
+#!/usr/bin/env sh
 
-NIXARGS=(--extra-experimental-features 'nix-command flakes')
+if ! [ -x "$(command -v nix)" ]; then
+    echo "It does not appear that you have nix installed!"
+    echo "Follow the instructions here to install the nix package manager: https://nixos.org/download"
+    exit 1
+fi
+
+if [ $# -eq 0 ]; then
+    echo "No script specified!"
+    echo "Usage:     ./run <script>"
+    exit 1
+fi
+
 # First argument is the nix script we want to run, the remaining arguments are passed to the script
 COMMAND="$1"
 shift
 
-case $COMMAND in
-shell)
-    exec nix "${NIXARGS[@]}" develop
-    ;;
-
-*)
-    # All arguments after `--` are passed to the script you are executing
-    exec nix "${NIXARGS[@]}" run ".#${COMMAND}" -- "$@"
-    ;;
-esac
+exec nix --extra-experimental-features 'nix-command flakes' run ".#${COMMAND}" -- "$@"
