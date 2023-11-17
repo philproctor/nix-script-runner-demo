@@ -77,7 +77,7 @@
                   scriptContents = builtins.mapAttrs
                     (name: value: ''
                       ${typeAttrs.header}
-                      ${typeAttrs.command} ${value}
+                      ${typeAttrs.command} ${value} "$@"
                     '')
                     scriptAttrs;
                 in
