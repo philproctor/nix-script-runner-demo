@@ -18,6 +18,7 @@
           jq
           git
           curl
+          gnugrep
           kubectl
         ];
 

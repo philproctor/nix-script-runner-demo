@@ -16,7 +16,4 @@ fi
 COMMAND="$1"
 shift
 
-export RUN_FROM_DIR="$PWD"
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-pushd "$SCRIPT_DIR"
 exec nix --extra-experimental-features 'nix-command flakes' run ".#${COMMAND}" -- "$@"
