@@ -1,5 +1,7 @@
 # Nix Script Runner Demo
 
+[The Blog Article](https://theviking.tech/devops/nix-scripting/)
+
 This repository is a demo of how [Nix](https://nixos.org/) can be used to create a repository of shared scripts with proper
 package locking. This provides a number of benefits over simple script sharing:
 
@@ -24,5 +26,3 @@ Now you can try again:
 ➤ ./run format
 0 / 1 have been reformatted
 ```
-
-TODO: update this readme with link to theviking.tech article
